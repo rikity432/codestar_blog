@@ -9,7 +9,5 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ("status", "created_on")
     search_fields = ("title", "content")
     prepopulated_fields = {"slug": ("title",)}
-
-
 admin.site.register(Comment)
-admin.site.register(Post)
+
