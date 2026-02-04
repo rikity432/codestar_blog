@@ -1,6 +1,5 @@
 .venv/
 env.py
-blog/fixtures/
 
 # Local dev database
 db.sqlite3
