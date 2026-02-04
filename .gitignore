@@ -1,6 +1,10 @@
 .venv/
 env.py
 
+# Python cache/bytecode
+__pycache__/
+*.pyc
+
 # Local dev database
 db.sqlite3
 
