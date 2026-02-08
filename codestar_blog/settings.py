@@ -29,9 +29,14 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY", "unsafe-dev-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Set `DEBUG=True` in env.py locally if you want debug pages.
+DEBUG = os.environ.get("DEBUG", "False").strip().lower() in ("1", "true", "yes", "on")
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".herokuapp.com"]
+
+# django.contrib.sites / django-allauth
+# Allauth uses the Sites framework for things like signup and building absolute URLs.
+SITE_ID = int(os.environ.get("SITE_ID", "1"))
 
 
 # Application definition
@@ -54,6 +59,11 @@ INSTALLED_APPS = [
     'cloudinary',
     'blog',
     'about',
+]
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
